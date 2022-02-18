@@ -6,7 +6,7 @@
 /*   By: jting <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 13:45:58 by jting             #+#    #+#             */
-/*   Updated: 2022/02/18 17:47:43 by jting            ###   ########.fr       */
+/*   Updated: 2022/02/18 17:53:47 by jting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char	**ft_split(char const *s, char c)
 		dst[i] = ft_substr(s, start, ft_len(s, c));
 		start += ft_len(s, c);
 		i++;
-	}	
+	}
+	dst[i] = 0;	
 	return (dst);
 }
