@@ -6,13 +6,13 @@
 /*   By: jting <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 13:45:58 by jting             #+#    #+#             */
-/*   Updated: 2022/02/18 17:53:47 by jting            ###   ########.fr       */
+/*   Updated: 2022/02/23 16:00:13 by jting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	ft_wordcount(char *s, char c)
+static unsigned int	ft_wordcount(char const *s, char c)
 {
 	unsigned int	i;
 	unsigned int	words;
@@ -26,10 +26,10 @@ static unsigned int	ft_wordcount(char *s, char c)
 		if (s[i] != c && s[i] != '\0')
 			words++;
 		while (s[i] != c && s[i] != '\0')
-			i++;
+		i++;
 	}
 	return (words);
-}	
+}
 
 static	unsigned int	ft_len(char const *s, char c)
 {
@@ -41,7 +41,7 @@ static	unsigned int	ft_len(char const *s, char c)
 	while (s[i] == c && s[i])
 		i++;
 	while (s[i] != c && s[i])
-	{	
+	{
 		i++;
 		len++;
 	}
@@ -51,22 +51,22 @@ static	unsigned int	ft_len(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char				**dst;
-	unsigned int			i;
+	unsigned int		i;
 	unsigned int		start;
 
-	dst = malloc(sizeof(*s) * (ft_wordcount((char *)s, c) + 1));
-	if (!dst)
-		return (dst);
+	dst = (char **)malloc(sizeof(*dst) * (ft_wordcount(s, c) + 1));
+	if (!dst || !s)
+		return (NULL);
 	i = 0;
 	start = 0;
 	while (i < ft_wordcount((char *)s, c))
 	{
 		while (s[start] == c)
 			start++;
-		dst[i] = ft_substr(s, start, ft_len(s, c));
-		start += ft_len(s, c);
+		dst[i] = ft_substr(s, start, ft_len(&s[start], c));
+		start += ft_len(&s[start], c);
 		i++;
 	}
-	dst[i] = 0;	
+	dst[i] = 0;
 	return (dst);
 }

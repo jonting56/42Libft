@@ -6,7 +6,7 @@
 /*   By: jting <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 11:33:25 by jting             #+#    #+#             */
-/*   Updated: 2022/02/18 11:44:19 by jting            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:16:19 by jting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
-		return (NULL);	
+		return (NULL);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
